@@ -45,6 +45,7 @@
     "@angular/compiler-cli": "8.0.0",
     "@angular/core": "8.0.0",
     "@angular/forms": "8.0.0",
+    "@angular/animations": "8.0.0",
     "@angular/language-service": "8.0.0",
     "@angular/platform-browser": "8.0.0",
     "@angular/platform-browser-dynamic": "8.0.0",
@@ -82,5 +83,9 @@
   },
   "engines": {
     "node": ">=10.9.0"
+  },
+  "dependencies": {
+    "@angular/animations": "^8.1.2",
+    "ng-zorro-antd": "^8.1.0"
   }
 }

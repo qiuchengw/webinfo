@@ -19,6 +19,8 @@ import { WebviewDirective } from './directives/webview.directive';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 
+import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -35,6 +37,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    NgZorroAntdModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -43,7 +46,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [ElectronService],
+  providers: [
+    ElectronService,
+    { provide: NZ_I18N, useValue: zh_CN }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
