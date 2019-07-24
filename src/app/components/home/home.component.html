@@ -1,6 +1,10 @@
 <div class="container">
-  <h1 class="title">
-    {{ 'PAGES.HOME.TITLE' | translate }}    
-  </h1>
-  <button nz-button nzType="primary">Primary</button>
+  <div class="search-bar">
+    <input nz-input placeholder="input url:" [(ngModel)]="value" />
+    <button nz-button nzType="primary" nzShape="circle">
+      <i nz-icon nzType="search"></i>
+    </button>
+  </div>
+
+  <webview id="web" src="https://www.baidu.com/"></webview>
 </div>

@@ -1,17 +1,40 @@
+@mixin cbox($width:1px, $color:red) {
+  border: $width solid $color;
+}
+
 .container {
   height: 100%;
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 
   background: url(../../../assets/background.jpg) no-repeat center fixed;
   -webkit-background-size: cover; /* pour anciens Chrome et Safari */
   background-size: cover; /* version standardisée */
+}
 
-  .title {
-    color: white;
-    margin:0;
-    padding:50px 20px;
+.search-bar{
+  display: flex;
+  flex: 1;
+  // height: 40rpx;
+
+  @include cbox();
+
+  input{
+    display: flex;
+    flex: 1;
   }
 
+  .btn{
+    width: 35rpx;
+    height: 35rpx;
+  }
+}
+
+#web{
+  display: inline-flex;
+  flex:1;
+  height: 100%;
+
+  @include cbox();
 }

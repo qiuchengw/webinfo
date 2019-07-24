@@ -39,13 +39,13 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.800.0",
+    "@angular/animations": "8.0.0",
     "@angular/cli": "8.0.1",
     "@angular/common": "8.0.0",
     "@angular/compiler": "8.0.0",
     "@angular/compiler-cli": "8.0.0",
     "@angular/core": "8.0.0",
     "@angular/forms": "8.0.0",
-    "@angular/animations": "8.0.0",
     "@angular/language-service": "8.0.0",
     "@angular/platform-browser": "8.0.0",
     "@angular/platform-browser-dynamic": "8.0.0",
@@ -85,7 +85,7 @@
     "node": ">=10.9.0"
   },
   "dependencies": {
-    "@angular/animations": "^8.1.2",
+    "electron-tabs": "^0.9.5",
     "ng-zorro-antd": "^8.1.0"
   }
 }
