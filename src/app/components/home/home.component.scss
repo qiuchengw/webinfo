@@ -2,15 +2,17 @@
   border: $width solid $color;
 }
 
+@import "./electron-tabs.css";
+
 .container {
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
 
-  background: url(../../../assets/background.jpg) no-repeat center fixed;
-  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
-  background-size: cover; /* version standardisée */
+  // background: url(../../../assets/background.jpg) no-repeat center fixed;
+  // -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  // background-size: cover; /* version standardisée */
 }
 
 .search-bar{
@@ -35,6 +37,7 @@
   display: inline-flex;
   flex:1;
   height: 100%;
+  width: 100%;
 
   @include cbox();
 }
