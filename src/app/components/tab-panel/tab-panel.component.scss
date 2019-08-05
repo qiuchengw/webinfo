@@ -1,0 +1,16 @@
+@mixin cbox($width:1px, $color:red) {
+    border: $width solid $color;
+}
+
+nz-tabset{
+    @include cbox(3px, green);
+    flex: 1;
+}
+
+nz-tab, webview{
+    flex: 1;
+    @include cbox(3px, blue);
+    width: 100%;
+    height: 100%;
+}
+
