@@ -31,6 +31,8 @@ export class TabPanelComponent implements OnInit {
   }
 
   newTab(url?: string): void {
+    console.log("----> create tab:", url);
+    
     this._tabs.push({
       url: url,
       title: url,

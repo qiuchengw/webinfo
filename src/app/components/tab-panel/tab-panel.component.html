@@ -1,9 +1,10 @@
 <nz-tabset [nzType]="'card'" [nzSelectedIndex]="_index">
   <nz-tab *ngFor="let tab of _tabs" [nzTitle]="titleTemplate">
     <ng-template #titleTemplate>
-      <div tab-id="tab.id">{{ tab.title }}<i nz-icon nzType="close" class="ant-tabs-close-x" (click)="closeTab(tab.id)"></i></div>
+      <div tab-id="tab.id">{{ tab.title }}
+        <i nz-icon nzType="close" class="ant-tabs-close-x" (click)="closeTab(tab.id)"></i>
+      </div>
     </ng-template>
-    <!-- <webview [src]="tab.url"></webview> -->
-    <webview src="https://www.baidu.com"></webview>
+    <webview [attr.src]="tab.url"></webview>
   </nz-tab>
 </nz-tabset>

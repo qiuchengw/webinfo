@@ -5,11 +5,16 @@
 nz-tabset{
     @include cbox(3px, green);
     flex: 1;
+
+    .ant-tabs-tabpane{
+        height: 100%;
+        @include cbox(3px, red);
+    }
 }
 
-nz-tab, webview{
+webview{
     flex: 1;
-    @include cbox(3px, blue);
+    // @include cbox(3px, blue);
     width: 100%;
     height: 100%;
 }
