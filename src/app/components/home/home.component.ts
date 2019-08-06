@@ -21,4 +21,8 @@ export class HomeComponent implements OnInit {
     // });
   }
 
+  onSearch() {
+    console.log("---> the val:", );
+  }
+
 }

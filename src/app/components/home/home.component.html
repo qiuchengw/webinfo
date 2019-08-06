@@ -1,9 +1,12 @@
 <div class="container">
+
   <div class="search-bar">
-    <input nz-input placeholder="input url:" [(ngModel)]="value" />
-    <button nz-button nzType="primary" nzShape="circle">
-      <i nz-icon nzType="search"></i>
-    </button>
+    <nz-input-group nzSearch nzAddOnBefore="地址：" [nzAddOnAfter]="suffixIconButton">
+      <input type="text" nz-input placeholder="..." [(ngModel)]="value" />
+    </nz-input-group>
+    <ng-template #suffixIconButton>
+      <button nz-button nzType="primary" nzSearch (click)="onSearch()"><i nz-icon nzType="search"></i></button>
+    </ng-template>
   </div>
 
   <webtab id="tabs"></webtab>
