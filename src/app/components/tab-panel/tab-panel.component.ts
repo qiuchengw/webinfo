@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, Directive, Input } from '@angular/core';
 import { NzTabChangeEvent } from 'ng-zorro-antd';
+import { PluginContainerComponent } from '../plugin-container/plugin-container.component';
 
 
 interface WebTab{
@@ -14,6 +15,8 @@ interface WebTab{
   styleUrls: ['./tab-panel.component.scss']
 })
 export class TabPanelComponent implements OnInit {
+  @ViewChildren(PluginContainerComponent)
+  private _pluginCont: QueryList<PluginContainerComponent>;
   private _index = 0;
   private _id = 1;
   private _tabs: WebTab[] = [];
@@ -24,6 +27,12 @@ export class TabPanelComponent implements OnInit {
       return null; 
     }
     return this.web(this._tabs[this._index].id);
+  }
+
+  get currentPluginContainer(){
+    return this._pluginCont.find((item, index)=>{
+      return (index == this._index);
+    });
   }
 
   closeTab(id: number): void {
@@ -37,6 +46,7 @@ export class TabPanelComponent implements OnInit {
  
   ngOnInit() {
     this.newTab("http://www.baidu.com");
+    this.newTab("http://cn.bing.com");
   }
 
   newTab(url?: string): void {
@@ -61,6 +71,8 @@ export class TabPanelComponent implements OnInit {
   }
 
   onTabChanged(event: NzTabChangeEvent){
-    console.log("--> the current web:", this.currentWeb);
+    if (this.currentPluginContainer){
+      this.currentPluginContainer.setWebview(this.currentWeb);
+    }
   }
 }

@@ -7,7 +7,10 @@
     </ng-template>
 
     <div class="web-container">
-        <webview id="web-{{tab.id}}" [attr.src]="tab.url"></webview>
+        <webview id="web-{{tab.id}}" [attr.src]="tab.url"
+          webpreferences="allowRunningInsecureContent, javascript=no"
+          allowpopups plugins>
+        </webview>
         <app-plugin-container id="plugin-{{tab.id}}"></app-plugin-container>
     </div>
   </nz-tab>

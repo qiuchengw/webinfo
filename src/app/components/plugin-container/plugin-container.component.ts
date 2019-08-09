@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./plugin-container.component.scss']
 })
 export class PluginContainerComponent implements OnInit {
-
+  private _web: Element = null;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  setWebview(v :Element){
+    this._web = v;
+
+    console.log("---> the webview:", this._web);
   }
 
 }
