@@ -41,7 +41,7 @@ export class TabPanelComponent implements OnInit {
 
   newTab(url?: string): void {
     console.log("----> create tab:", url);
-    
+
     this._tabs.push({
       url: url,
       title: url,
@@ -50,7 +50,7 @@ export class TabPanelComponent implements OnInit {
     this._index = this._tabs.length - 1;
   }
 
-  web(id: number): any{
+  web(id: number): any {
     return document.querySelector(`#web-${id}`);
   }
 

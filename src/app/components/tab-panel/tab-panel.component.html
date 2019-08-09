@@ -1,10 +1,14 @@
 <nz-tabset [nzType]="'card'" [(nzSelectedIndex)]="_index" (nzSelectChange)="onTabChanged([$event])">
-  <nz-tab *ngFor="let tab of _tabs" [nzTitle]="titleTemplate">
+  <nz-tab *ngFor="let tab of _tabs" [nzTitle]="titleTemplate" class="hello">
     <ng-template #titleTemplate>
       <div id="tab-{{tab.id}}">{{ tab.title }}
         <i nz-icon nzType="close" class="ant-tabs-close-x" (click)="closeTab(tab.id)"></i>
       </div>
     </ng-template>
-    <webview id="web-{{tab.id}}" [attr.src]="tab.url"></webview>
+
+    <div class="web-container">
+        <webview id="web-{{tab.id}}" [attr.src]="tab.url"></webview>
+        <app-plugin-container id="plugin-{{tab.id}}"></app-plugin-container>
+    </div>
   </nz-tab>
 </nz-tabset>

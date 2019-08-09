@@ -10,7 +10,7 @@ const TabGroup = require('electron-tabs');
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  @ViewChild('webs',{static: true})
+  @ViewChild('webs', {static: true})
   private _webs: TabPanelComponent;
   private _url: string;
   constructor() { }
@@ -25,19 +25,19 @@ export class HomeComponent implements OnInit {
   }
 
   isURL(str_url:string) {
-    let strRegex = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
-    let re = new RegExp(strRegex); 
+    const strRegex = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
+    const re = new RegExp(strRegex);
     return re.test(str_url);
   }
 
-  onKeyEnter(url: string){
+  onKeyEnter(url: string) {
     this._url = url;
     this.onSearch(url);
   }
 
   onSearch(url: string) {
-    console.log("---> the val:", url);
-    if (!this.isURL(url)){
+    console.log('---> the val:', url);
+    if (!this.isURL(url)) {
       // alert("Not a correct URL!");
       return;
     }
