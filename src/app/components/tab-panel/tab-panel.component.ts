@@ -17,9 +17,9 @@ interface WebTab{
 export class TabPanelComponent implements OnInit {
   @ViewChildren(PluginContainerComponent)
   private _pluginCont: QueryList<PluginContainerComponent>;
-  private _index = 0;
+  _index = 0;
   private _id = 1;
-  private _tabs: WebTab[] = [];
+  _tabs: WebTab[] = [];
 
   get currentWeb(){
     if (this._tabs.length == 0 || this._index < 0 

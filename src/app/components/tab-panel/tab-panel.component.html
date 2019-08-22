@@ -1,4 +1,4 @@
-<nz-tabset [nzType]="'card'" [(nzSelectedIndex)]="_index" (nzSelectChange)="onTabChanged([$event])">
+<nz-tabset [nzType]="'card'" [(nzSelectedIndex)]="_index" (nzSelectChange)="onTabChanged($event)">
   <nz-tab *ngFor="let tab of _tabs" [nzTitle]="titleTemplate" class="hello">
     <ng-template #titleTemplate>
       <div id="tab-{{tab.id}}">{{ tab.title }}

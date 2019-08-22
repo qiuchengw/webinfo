@@ -7,5 +7,4 @@
 ## 依赖
 
 1. [angular-electron](https://github.com/maximegris/angular-electron)
-2. [electron-tabs](https://github.com/brrd/electron-tabs)
-3. [ng-ant-design](https://ng.ant.design)
+2. [ng-ant-design](https://ng.ant.design)
