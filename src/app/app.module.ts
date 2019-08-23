@@ -28,6 +28,9 @@ import { PageNotFoundComponent } from './shared/components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
+import { WebPageComponent } from './components/web-page/web-page.component';
+import { UrlHistoryComponent } from './components/url-history/url-history.component';
+import { UserViewDirective } from './directives/user-view.directive';
 
 registerLocaleData(zh);
 
@@ -44,6 +47,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     TabPanelComponent,
     PluginContainerComponent,
     PageNotFoundComponent,
+    WebPageComponent,
+    UrlHistoryComponent,
+    UserViewDirective,
   ],
   imports: [
     BrowserModule,
