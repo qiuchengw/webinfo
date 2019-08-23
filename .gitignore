@@ -37,6 +37,7 @@ src/**/*.js
 /libpeerconnection.log
 npm-debug.log
 testem.log
+*.log
 /typings
 package-lock.json
 
