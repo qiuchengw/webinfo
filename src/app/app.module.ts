@@ -24,6 +24,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { TabPanelComponent } from './components/tab-panel/tab-panel.component';
 import { PluginContainerComponent } from './components/plugin-container/plugin-container.component';
+import { PageNotFoundComponent } from './shared/components';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -36,7 +37,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     WebviewDirective,
     TabPanelComponent,
-    PluginContainerComponent
+    PluginContainerComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
