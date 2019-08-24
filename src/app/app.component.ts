@@ -9,6 +9,9 @@ import { AppConfig } from '../environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  private _showWeb: boolean = false; 
+  private _url: string = "";
+
   constructor(
     public electronService: ElectronService,
     private translate: TranslateService
@@ -24,5 +27,11 @@ export class AppComponent {
     } else {
       console.log('Mode web');
     }
+  }
+
+  onSearch(url: string){
+    console.log("--->url", url);
+    this._url = url;
+    this._showWeb = true;
   }
 }

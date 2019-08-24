@@ -19,7 +19,6 @@ import { ElectronService } from './providers/electron.service';
 import { WebviewDirective } from './directives/webview.directive';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
 
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { TabPanelComponent } from './components/tab-panel/tab-panel.component';
@@ -42,7 +41,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     WebviewDirective,
     TabPanelComponent,
     PluginContainerComponent,
