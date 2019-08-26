@@ -30,6 +30,8 @@ import zh from '@angular/common/locales/zh';
 import { WebPageComponent } from './components/web-page/web-page.component';
 import { UrlHistoryComponent } from './components/url-history/url-history.component';
 import { UserViewDirective } from './directives/user-view.directive';
+import { PluginManager } from './plugins/plugin-man';
+import { SimplePlugin } from './plugins/test-simple-plugin';
 
 registerLocaleData(zh);
 
@@ -66,8 +68,13 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     ElectronService,
+    PluginManager,
     { provide: NZ_I18N, useValue: zh_CN }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(private _plugins: PluginManager){
+    _plugins.registerPlugin<SimplePlugin>(SimplePlugin, ['*.baidu.com']);
+  }
+}
