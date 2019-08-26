@@ -75,6 +75,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 })
 export class AppModule { 
   constructor(private _plugins: PluginManager){
-    _plugins.registerPlugin<SimplePlugin>(SimplePlugin, ['*.baidu.com']);
+    _plugins.registerPlugin<SimplePlugin>(SimplePlugin, ['www.baidu.com']);
   }
 }
