@@ -14,24 +14,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { ElectronService } from './providers/electron.service';
-
-import { WebviewDirective } from './directives/webview.directive';
-
 import { AppComponent } from './app.component';
 
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
-import { TabPanelComponent } from './components/tab-panel/tab-panel.component';
-import { PluginContainerComponent } from './components/plugin-container/plugin-container.component';
 import { PageNotFoundComponent } from './shared/components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { WebPageComponent } from './components/web-page/web-page.component';
 import { UrlHistoryComponent } from './components/url-history/url-history.component';
-import { UserViewDirective } from './directives/user-view.directive';
 import { PluginManager } from './plugins/plugin-man';
 import { SimplePlugin } from './plugins/test-simple-plugin';
+import { WebviewDirective } from './shared/directives';
+import { ElectronService } from './core/services';
 
 registerLocaleData(zh);
 
@@ -44,12 +39,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     WebviewDirective,
-    TabPanelComponent,
-    PluginContainerComponent,
     PageNotFoundComponent,
     WebPageComponent,
+    WebviewDirective,
     UrlHistoryComponent,
-    UserViewDirective,
   ],
   imports: [
     BrowserModule,
@@ -73,8 +66,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
-  constructor(private _plugins: PluginManager){
+export class AppModule {
+  constructor(private _plugins: PluginManager) {
     _plugins.registerPlugin<SimplePlugin>(SimplePlugin, ['www.baidu.com']);
   }
 }

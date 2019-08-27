@@ -9,8 +9,8 @@ import { AppConfig } from '../environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  private _showWeb: boolean = false; 
-  private _url: string = "";
+  private _showWeb = false;
+  private _url = '';
 
   constructor(
     public electronService: ElectronService,
@@ -29,8 +29,7 @@ export class AppComponent {
     }
   }
 
-  onSearch(url: string){
-    console.log("--->url", url);
+  onSearch(url: string) {
     this._url = url;
     this._showWeb = true;
   }

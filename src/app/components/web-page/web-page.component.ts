@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { WebviewDirective } from '../../directives/webview.directive';
-import { WebviewTag } from 'electron';
+import { WebviewDirective } from '../../shared/directives';
 
 @Component({
   selector: 'app-web-page',
@@ -8,13 +7,13 @@ import { WebviewTag } from 'electron';
   styleUrls: ['./web-page.component.scss']
 })
 export class WebPageComponent implements OnInit {
-  @Input("url") url:string;
+  @Input("url") url: string;
   @ViewChild(WebviewDirective, {static: true}) _web!: WebviewDirective;
-  
+
   constructor() { }
 
   ngOnInit() {
-    console.log("---> the web:", this._web);
+    console.log('---> the web:', this._web);
 
     // this._web.nativeElement.addEventListener('load-commit', (t)=>{
     //   console.log("--->", t);
