@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { ElectronService } from './core/services';
 import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from '../environments/environment';
@@ -15,7 +15,8 @@ export class AppComponent {
 
   constructor(
     public electronService: ElectronService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private _ref: ChangeDetectorRef
   ) {
     translate.setDefaultLang('en');
     console.log('AppConfig', AppConfig);
@@ -31,13 +32,19 @@ export class AppComponent {
 
     const that = this;
     ipcRenderer.on('load-url', (evt: Electron.IpcRendererEvent, ...args: any[]) => {
-      console.log('---> app component:', evt, args);
-      // that.onSearch(args);
+      // console.log('---> app component:', evt, args);
+      if (args.length > 0) {
+        that.onSearch(args[0]);
+      }
     });
   }
 
   onSearch(url: string) {
+    // console.log('---load url:', url);
+
     this._url = url;
     this._showWeb = true;
+
+    this._ref.detectChanges();
   }
 }

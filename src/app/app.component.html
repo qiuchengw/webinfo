@@ -1,5 +1,4 @@
 <!-- <ng-template app-user-view></ng-template> -->
 
-<app-url-history *ngIf="!_showWeb"
-  (search)="onSearch($event)"></app-url-history>
+<app-url-history *ngIf="!_showWeb" (search)="onSearch($event)"></app-url-history>
 <app-web-page *ngIf="_showWeb" [url]="_url"></app-web-page>

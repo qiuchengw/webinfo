@@ -1,6 +1,7 @@
 import { app, BrowserWindow, screen, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+import { NewWinArgs } from './src/proto';
 
 // 窗口管理器
 class WinManager {
@@ -27,22 +28,30 @@ class WinManager {
     });
     this._topWin.push(win);
 
+    // console.log('---> create window server:', this._serve, weburl);
+
+    const onSuccess = () => {
+      // console.log('---> main.ts load url:', weburl);
+      if (weburl) {
+        win.webContents.send('load-url', weburl);
+      }
+    };
+
+    const onFail = (v) => {
+      console.log('----> main.ts error:', v);
+    };
+
     if (this._serve) {
       require('electron-reload')(__dirname, {
         electron: require(`${__dirname}/node_modules/electron`)
       });
-      win.loadURL('http://localhost:4200');
+      win.loadURL('http://localhost:4200').then(onSuccess, onFail);
     } else {
       win.loadURL(url.format({
         pathname: path.join(__dirname, 'dist/index.html'),
         protocol: 'file:',
         slashes: true
-      })).then((v) => {
-        console.log('---> main.ts:', v);
-        if (weburl) {
-          win.webContents.send('load-url', weburl);
-        }
-      });
+      })).then(onSuccess, onFail);
     }
 
     if (this._serve) {
@@ -98,15 +107,15 @@ try {
     // On OS X it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (!!_man && !_man.hasWindow()) {
-      _man.createWindow('http://www.baidu.com');
+      _man.createWindow();
     }
   });
 
   ipcMain.on('new-window', (evt: Electron.IpcMainEvent, ...arg: any[]) => {
-    console.log('---> new-window evt, arg', evt, arg);
     arg.forEach((t) => {
-      console.log('---> new-window: naviage to url', t);
-      _man.createWindow(t);
+      const v = t as NewWinArgs;
+      console.log('---> new-window: naviage to url xxx:', v);
+      _man.createWindow(v.url);
     });
   });
 
