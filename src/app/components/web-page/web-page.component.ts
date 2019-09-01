@@ -12,7 +12,6 @@ export class WebPageComponent implements OnInit {
   @ViewChild(WebviewDirective, {static: true}) _web!: WebviewDirective;
 
   constructor() {
-
   }
 
   ngOnInit() {

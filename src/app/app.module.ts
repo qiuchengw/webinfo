@@ -27,6 +27,7 @@ import { PluginManager } from './plugins/plugin-man';
 import { SimplePlugin } from './plugins/test-simple-plugin';
 import { WebviewDirective } from './shared/directives';
 import { ElectronService } from './core/services';
+import { PluginsComponent } from './components/plugins/plugins.component';
 
 registerLocaleData(zh);
 
@@ -43,6 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     WebPageComponent,
     WebviewDirective,
     UrlHistoryComponent,
+    PluginsComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,16 +2,23 @@ import { Directive, ElementRef } from '@angular/core';
 import { WebviewTag, shell, ipcRenderer } from 'electron';
 import { NewWinArgs } from '../../../../proto';
 import { PluginManager } from '../../../plugins/plugin-man';
+import { IPlugin } from '../../../plugins/plugin-interface';
+import { SimplePlugin } from '../../../plugins/test-simple-plugin';
 
 @Directive({
   selector: 'webview'
 })
 export class WebviewDirective {
+  private _plugins: IPlugin[] = []; // 当前可用的plugins
 
-  constructor(private _web: ElementRef<WebviewTag>, private _plugins: PluginManager) {
+  constructor(private _web: ElementRef<WebviewTag>, private _pluginMan: PluginManager) {
     console.log('---? theeee', _web);
     this.initEvents(this._web.nativeElement);
-    
+    this._plugins.push(new SimplePlugin());
+  }
+
+  get plugins(): IPlugin[] {
+    return this._plugins;
   }
 
   initEvents(web: WebviewTag) {
@@ -22,7 +29,7 @@ export class WebviewDirective {
 
     web.addEventListener('did-finish-load', (t) => {
       console.log('--->did-finish-load', t);
-      that._plugins.makePlugin(that._web.nativeElement.getURL());
+      // that._plugins = that._pluginMan.makePlugin(that._web.nativeElement.getURL());
     });
 
     web.addEventListener('did-fail-load', (t) => {

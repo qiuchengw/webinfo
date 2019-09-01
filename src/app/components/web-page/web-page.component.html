@@ -1,1 +1,34 @@
 <webview [attr.src]="url" nodeintegration allowpopups></webview>
+
+<div class="float-action">
+    <!-- nzShape="round" -->
+    <nz-badge [nzCount]="_web.plugins.length">
+        <button nz-button nzType="primary" [nzSize]="40" nz-popover [nzPopoverContent]="contentTemplate" nzPopoverPlacement="topRight">
+            <i nz-icon nzType="unordered-list" nzTheme="outline"></i>
+        </button>
+    </nz-badge>
+    
+    <!-- <ng-template #titleTemplate><i nz-icon nzType="close"></i> Title</ng-template> -->
+    <ng-template #contentTemplate>
+        <nz-table #basicTable [nzData]="_web.plugins">
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of basicTable.data">
+                <td>{{data.name}}</td>
+                <td>{{data.status}}</td>
+                <td>
+                    <a>Active</a>
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <a>Deactive</a>
+                </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </ng-template>        
+</div>

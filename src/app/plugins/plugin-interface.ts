@@ -6,12 +6,27 @@ enum AutoApply {
     LoadFinished,   // 完成时候应用
     Manual, // 手动应用
 }
+
+enum PluginStatus {
+    Bad = 0,    // 错误
+    Inactive = 1,
+    Active = 2,
+}
 // 插件基础抽象
 export class IPlugin {
     protected _autoApply: AutoApply = AutoApply.Manual;
     protected _name: string; // 插件名称
     private _url: string;
     private _web: WebPageComponent;
+    private _status: PluginStatus = PluginStatus.Inactive;
+
+    get status(){
+        return this._status;
+    }
+    
+    get name(){
+        return this._name;
+    }
 
     // 是否匹配
     // matchUrl(url: string): boolean;
