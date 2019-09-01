@@ -68,7 +68,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 })
 export class AppModule {
   constructor(private _plugins: PluginManager) {
+    // tslint:disable-next-line: quotemark
     console.log("---> AppModule loaded!");
-    _plugins.registerPlugin<SimplePlugin>(SimplePlugin, ['www.baidu.com']);
+    _plugins.registerPlugin<SimplePlugin>(SimplePlugin, SimplePlugin.matchRule());
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { WebviewDirective } from '../../shared/directives';
+import { PluginManager } from '../../plugins/plugin-man';
 
 @Component({
   selector: 'app-web-page',
@@ -7,10 +8,12 @@ import { WebviewDirective } from '../../shared/directives';
   styleUrls: ['./web-page.component.scss']
 })
 export class WebPageComponent implements OnInit {
-  @Input("url") url: string;
+  @Input('url') url: string;
   @ViewChild(WebviewDirective, {static: true}) _web!: WebviewDirective;
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
     console.log('---> the web:', this._web);

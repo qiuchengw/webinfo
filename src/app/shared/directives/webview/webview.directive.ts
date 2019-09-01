@@ -1,24 +1,28 @@
 import { Directive, ElementRef } from '@angular/core';
 import { WebviewTag, shell, ipcRenderer } from 'electron';
 import { NewWinArgs } from '../../../../proto';
+import { PluginManager } from '../../../plugins/plugin-man';
 
 @Directive({
   selector: 'webview'
 })
 export class WebviewDirective {
 
-  constructor(private _web: ElementRef<WebviewTag>) {
+  constructor(private _web: ElementRef<WebviewTag>, private _plugins: PluginManager) {
     console.log('---? theeee', _web);
     this.initEvents(this._web.nativeElement);
+    
   }
 
   initEvents(web: WebviewTag) {
+    const that = this;
     web.addEventListener('load-commit', (t) => {
       console.log('--->load-commit', t);
     });
 
     web.addEventListener('did-finish-load', (t) => {
       console.log('--->did-finish-load', t);
+      that._plugins.makePlugin(that._web.nativeElement.getURL());
     });
 
     web.addEventListener('did-fail-load', (t) => {
