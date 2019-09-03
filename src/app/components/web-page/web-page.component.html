@@ -23,9 +23,9 @@
                 <td>{{data.name}}</td>
                 <td>{{data.status}}</td>
                 <td>
-                    <a>Active</a>
+                    <a (click)="onActive(data)">Active</a>
                     <nz-divider nzType="vertical"></nz-divider>
-                    <a>Deactive</a>
+                    <a (click)="onDeactive(data)">Deactive</a>
                 </td>
                 </tr>
             </tbody>

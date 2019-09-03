@@ -10,7 +10,7 @@ import { ipcRenderer } from 'electron';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  private _showWeb = true;
+  private _showWeb = false;
   private _url = '';
 
   constructor(

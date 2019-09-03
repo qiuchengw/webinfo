@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { WebviewDirective } from '../../shared/directives';
-import { PluginManager } from '../../plugins/plugin-man';
+import { IPlugin } from '../../plugins/plugin-interface';
 
 @Component({
   selector: 'app-web-page',
@@ -23,4 +23,11 @@ export class WebPageComponent implements OnInit {
     // this._web.addEventListener();
   }
 
+  onActive(plugin: IPlugin){
+    plugin.active();
+  }
+
+  onDeactive(plugin: IPlugin){
+    plugin.deactive();
+  }
 }
