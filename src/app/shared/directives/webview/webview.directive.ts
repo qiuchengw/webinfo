@@ -50,6 +50,8 @@ export class WebviewDirective {
 
     web.addEventListener('will-navigate', async (e) => {
       console.log('--->will-navigate', e);
+      // 跳转新的url
+      that._plugins = that._pluginMan.makePlugin(e.url);
     });
 
     web.addEventListener('close', async (e) => {

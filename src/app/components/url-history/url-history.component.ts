@@ -15,7 +15,7 @@ export class UrlHistoryComponent implements OnInit {
   }
 
   isURL(str_url:string) {
-    const strRegex = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
+    const strRegex = /^(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
     const re = new RegExp(strRegex);
     return re.test(str_url);
   }
@@ -28,8 +28,12 @@ export class UrlHistoryComponent implements OnInit {
   onSearch(url: string) {
     console.log('---> the val:', url);
     if (!this.isURL(url)) {
-      // alert("Not a correct URL!");
+      alert('Not a correct URL!');
       return;
+    }
+    url = url.toLowerCase();
+    if (!url.startsWith('http://') && !url.startsWith('https://')){
+      url = 'http://' + url;
     }
     // 发射事件
     this.search.emit(url);
