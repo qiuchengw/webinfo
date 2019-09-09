@@ -28,7 +28,6 @@ import { SimplePlugin } from './plugins/test-simple-plugin';
 import { WebviewDirective } from './shared/directives';
 import { ElectronService } from './core/services';
 import { PluginsComponent } from './components/plugins/plugins.component';
-import { AddrBarComponent } from './components/addr-bar/addr-bar.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 registerLocaleData(zh);
@@ -47,7 +46,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     WebviewDirective,
     UrlHistoryComponent,
     PluginsComponent,
-    AddrBarComponent,
     SearchBarComponent,
   ],
   imports: [

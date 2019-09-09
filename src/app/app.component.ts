@@ -10,7 +10,7 @@ import { ipcRenderer } from 'electron';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  private _showWeb = false;
+  private _showWeb = true;
   private _url = '';
 
   constructor(
@@ -48,22 +48,9 @@ export class AppComponent {
     this._ref.detectChanges();
   }
 
-  // goBack(){
-  //   const web = this._web.nativeElement;
-  //   if (web.canGoBack()){
-  //     web.goBack();
-  //   }
-  // }
-
-  // goForward(){
-  //   const web = this._web.nativeElement;
-  //   if (web.canGoForward()){
-  //     web.goForward();
-  //   }
-  // }
-
-  goHome(){
-
+  onShowHome(s: string) {
+    this._showWeb = false;
+    this._url = 'about:blank';
+    this._ref.detectChanges();
   }
-
 }

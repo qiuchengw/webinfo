@@ -17,11 +17,19 @@ export class WebviewDirective {
     this.initEvents(this._web.nativeElement);
   }
 
+  navigateTo(url: string) {
+    this._web.nativeElement.src = url;
+  }
+
   get plugins(): IPlugin[] {
     return this._plugins;
   }
 
-  get historyUrls(){
+  get nativeWeb(): WebviewTag {
+    return this._web.nativeElement;
+  }
+
+  get historyUrls() {
     return this._historyUrls;
   }
 
