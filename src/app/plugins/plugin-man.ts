@@ -13,6 +13,10 @@ class PluginCreator {
         this._exp = new RegExp(exp);
     }
 
+    expStr(): string {
+        return this._exp.source;
+    }
+
     test(url: string): boolean {
         return this._exp.test(url);
     }
@@ -66,7 +70,9 @@ export class PluginManager {
         // tslint:disable-next-line: forin
         for (const k in this._plugins) {
             const v = this._plugins[k];
-            if (v.test(url)) {
+            const matched = v.test(url);
+            console.log('---> match url plugin:[%s], expr:[%s], url:[%s]', matched, v.expStr(), url);
+            if (matched) {
                 arr.push(...(v.make(url)));
             }
         }

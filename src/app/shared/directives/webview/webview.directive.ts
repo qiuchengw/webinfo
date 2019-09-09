@@ -12,18 +12,17 @@ export class WebviewDirective {
   private _plugins: IPlugin[] = []; // 当前可用的plugins
 
   constructor(private _web: ElementRef<WebviewTag>, private _pluginMan: PluginManager) {
-    console.log('---? theeee', _web);
+    // console.log('---? theeee', _web);
     this.initEvents(this._web.nativeElement);
-    this._plugins.push(new SimplePlugin());
   }
 
   get plugins(): IPlugin[] {
     return this._plugins;
   }
 
-  applyPlugin(aa: AutoApply){
+  applyPlugin(aa: AutoApply) {
     this.plugins.forEach(p => {
-      if (p.autoApply() === aa){
+      if (p.autoApply() === aa) {
         p.apply2Web(this._web);
       }
     });
