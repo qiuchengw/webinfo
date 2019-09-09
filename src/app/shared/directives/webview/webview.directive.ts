@@ -10,6 +10,7 @@ import { SimplePlugin } from '../../../plugins/test-simple-plugin';
 })
 export class WebviewDirective {
   private _plugins: IPlugin[] = []; // 当前可用的plugins
+  private _historyUrls: string[] = []; // 历史地址
 
   constructor(private _web: ElementRef<WebviewTag>, private _pluginMan: PluginManager) {
     // console.log('---? theeee', _web);
@@ -18,6 +19,10 @@ export class WebviewDirective {
 
   get plugins(): IPlugin[] {
     return this._plugins;
+  }
+
+  get historyUrls(){
+    return this._historyUrls;
   }
 
   applyPlugin(aa: AutoApply) {
@@ -33,12 +38,13 @@ export class WebviewDirective {
     web.addEventListener('load-commit', (t) => {
       console.log('--->load-commit', t);
       that._plugins = that._pluginMan.makePlugin(t.url);
-      this.applyPlugin(AutoApply.LoadCommit);
+      that._historyUrls.push(t.url);
+      that.applyPlugin(AutoApply.LoadCommit);
     });
 
     web.addEventListener('did-finish-load', (t) => {
       console.log('--->did-finish-load', t);
-      this.applyPlugin(AutoApply.LoadFinished);
+      that.applyPlugin(AutoApply.LoadFinished);
       // that._plugins = that._pluginMan.makePlugin(that._web.nativeElement.getURL());
     });
 

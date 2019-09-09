@@ -16,21 +16,9 @@
   // background-size: cover; /* version standardisée */
 }
 
-.search-bar{
-  display: flex;
-  height: 40rpx;
+app-search-bar{
   min-width: 300px;
   width: 50%;
-
-  input{
-    display: flex;
-    flex: 1;
-  }
-
-  .btn{
-    width: 35rpx;
-    height: 35rpx;
-  }
 }
 
 .history{

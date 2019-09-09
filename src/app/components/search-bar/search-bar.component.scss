@@ -1,0 +1,15 @@
+.search-bar{
+    display: flex;
+    height: 40rpx;
+
+    input{
+        display: flex;
+        flex: 1;
+    }
+
+    .btn{
+        width: 35rpx;
+        height: 35rpx;
+    }
+}
+  

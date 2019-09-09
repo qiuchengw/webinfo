@@ -47,4 +47,23 @@ export class AppComponent {
 
     this._ref.detectChanges();
   }
+
+  // goBack(){
+  //   const web = this._web.nativeElement;
+  //   if (web.canGoBack()){
+  //     web.goBack();
+  //   }
+  // }
+
+  // goForward(){
+  //   const web = this._web.nativeElement;
+  //   if (web.canGoForward()){
+  //     web.goForward();
+  //   }
+  // }
+
+  goHome(){
+
+  }
+
 }

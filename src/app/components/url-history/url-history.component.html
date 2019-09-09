@@ -1,13 +1,5 @@
 <div class="container">
-    <div class="search-bar">
-        <nz-input-group nzSearch nzAddOnBefore="URL:" [nzAddOnAfter]="suffixIconButton">
-            <input type="text" #url placeholder="..." nz-input (keyup.enter)="onKeyEnter(url.value)" />
-        </nz-input-group>
-        <ng-template #suffixIconButton>
-            <button nz-button nzType="primary" nzSearch (click)="onSearch(url.value)"><i nz-icon nzType="search"></i></button>
-        </ng-template>
-    </div>
-
+    <app-search-bar (search)="onSearch($event)"></app-search-bar>
     <div class="history">
         <div class="fav-box">
             <div class="item"></div>
