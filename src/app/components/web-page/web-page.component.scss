@@ -25,11 +25,15 @@ webview{
     display: flex;
     flex:1;
     flex-direction: row;
+    justify-content: space-around;
+
+    > *{
+        // border-spacing: 4px;
+        margin-right: 4px;
+    }
 
     ::ng-deep app-search-bar{
         flex:1;
-        margin-left: 4px;
-        margin-right: 4px;
     }
 
     // 

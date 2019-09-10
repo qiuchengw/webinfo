@@ -3,6 +3,7 @@
         <button nz-button nzType="primary" (click)="goBack()"><i nz-icon nzType="left"></i></button>
         <button nz-button nzType="primary" (click)="goHome()"><i nz-icon nzType="home"></i></button>
         <button nz-button nzType="primary" (click)="goForward()"><i nz-icon nzType="right"></i></button>
+        <button nz-button nzType="primary" (click)="reload()"><i nz-icon nzType="reload"></i></button>
     </nz-button-group>
 
     <app-search-bar (search)="onSearch($event)"></app-search-bar>
@@ -10,9 +11,13 @@
     <!-- nzShape="round" -->
     <nz-badge [nzCount]="_web.plugins.length">
         <button nz-button nzType="primary" [nzSize]="40" nz-popover [nzPopoverContent]="contentTemplate" nzPopoverPlacement="bottomRight">
-            <i nz-icon nzType="unordered-list" nzTheme="outline"></i>Plugins
+            <i nz-icon nzType="unordered-list" nzTheme="outline"></i>插件
         </button>
     </nz-badge>
+
+    <button nz-button nzType="primary" [nzSize]="40" (click)="savePage()">
+        <i nz-icon nzType="download" nzTheme="outline"></i>保存页面
+    </button>
     
     <!-- <ng-template #titleTemplate><i nz-icon nzType="close"></i> Title</ng-template> -->
     <ng-template #contentTemplate>

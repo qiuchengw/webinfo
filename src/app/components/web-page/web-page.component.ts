@@ -50,4 +50,16 @@ export class WebPageComponent implements OnInit {
   goHome() {
     this.showHome.emit('about:blank');
   }
+
+  reload() {
+    this._web.nativeWeb.reload();
+  }
+
+  savePage() {
+    console.log('--->> save page');
+    const web = this._web;
+    const cont = web.nativeWeb.getWebContents();
+    cont.savePage('/Users/fz/test/x.html', 'HTMLComplete');
+    // cont.savePage('/Users/fz/test/y.html', 'MHTML');
+  }
 }

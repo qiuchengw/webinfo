@@ -64,11 +64,15 @@ export class WebviewDirective {
       console.log('--->new-window', e);
       const protocol = require('url').parse(e.url).protocol;
         if (protocol === 'http:' || protocol === 'https:') {
-          const arg: NewWinArgs = {
-            url: e.url
-          };
-          ipcRenderer.send('new-window', arg);
-          // await shell.openExternal(e.url)
+          if (0) { // 键盘按着ctrl or command
+            const arg: NewWinArgs = {
+              url: e.url
+            };
+            ipcRenderer.send('new-window', arg);
+            // await shell.openExternal(e.url)
+        } else { // 直接在本窗口打开
+            that.navigateTo(e.url);
+          }
         }
     });
 
